@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>阿里图床 - 阿里旗下虾米图床</title>
+    <link href="https://img.alicdn.com/tfs/TB1qP4zgY5YBuNjSspoXXbeNFXa-550-550.png" rel="icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="keywords" content="阿里图床,免费图片外链,API图床,图片外链,聚合图床">
+    <meta name="description" content="简洁图床">
+    <link rel="stylesheet" type="text/css" href="./static/css/fileinput.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/iconfont/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./static/newicon/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./static/uploadicon/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/mdui.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/app.css">
+
+    <style>
+      .btn-file {
+          background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+          background-size: 400%;
+          color: #fff;
+      }
+
+      .btn-file:hover {
+          animation: sun 8s infinite;
+      }
+
+      @keyframes sun {
+          100%{
+              background-position: -400% 0;
+          }
+      }
+    </style>
+
+</head>
+
+<body class="mdui-theme-accent-indigo mdui-appbar-with-toolbar ">
+  <div class="mdui-appbar mdui-appbar-fixed">
+    <div class="mdui-toolbar mdui-color-black">
+      <span mdui-drawer="{target: '#menu'}" class="mdui-btn mdui-btn-icon open-menu"><i class="mdui-icon material-icons">&#xe5d2;</i></span>
+      <a href="index.html" class="mdui-typo-headline">阿里图床</a>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+  </div>
+
+  <div id="menu" class="mdui-drawer mdui-drawer-close">
+    <div class="mdui-list" mdui-collapse="{accordion: true}">
+      <a class="mdui-list-item mdui-ripple" href="index.html">
+        <i class="mdui-list-item-icon mdui-icon material-icons iconfont icon-ali mdui-text-color-red"></i>
+        <div class="mdui-list-item-content">阿里图床</div>
+      </a>
+      <a class="mdui-list-item mdui-ripple" href="#">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue"></i>
+        <div class="mdui-list-item-content">待收录中</div>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="mdui-container">
+    <main>
+      <div class="upload-container">
+        <div class="title">
+          <h5>
+          阿里云旗下虾米图床 - 由阿里云提供全程CDN加速
+          </h5>
+          <p>最大可上传 20 MB的图片，单次同时可选择 20 张。</p>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+          <input id="image" style="display: none;" type="file" multiple="" name="image" accept="image/*">
+        </form>
+        <div class="success-info">
+          <div class="mdui-tab mdui-tab-scrollable" mdui-tab="">
+            <a href="#code-url" class="mdui-ripple mdui-tab-active">URL</a>
+            <a href="#code-html" class="mdui-ripple">HTML</a>
+            <a href="#code-bbcode" class="mdui-ripple">BBCode</a>
+            <a href="#code-markdown" class="mdui-ripple">Markdown</a>
+            <a href="#code-markdown-with-link" class="mdui-ripple">Markdown with link</a>
+          </div>
+          <div id="code-url">
+            <ul></ul>
+          </div>
+          <div id="code-html">
+            <ul></ul>
+          </div>
+          <div id="code-bbcode">
+            <ul></ul>
+          </div>
+          <div id="code-markdown">
+            <ul></ul>
+          </div>
+          <div id="code-markdown-with-link">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+  <div class="mdui-fab-wrapper">
+    <button id="to-top" class="mdui-fab mdui-ripple mdui-fab-hide mdui-color-theme-accent">
+      <i class="mdui-icon material-icons">&#xe5d8;</i>
+    </button>
+  </div>
+  <div id="loading-container">
+    <div class="mask"></div>
+    <div class="loading">
+      <div class="mdui-spinner mdui-spinner-colorful"></div>
+    </div>
+  </div>
+    <div id="copyUp" style="display: none;">
+      <div class="mdui-progress">
+        <div class="mdui-progress-indeterminate"></div>
+      </div>
+    </div>
+<footer>
+    <div id="copyUp" style="display: none;">
+      <div class="mdui-progress">
+        <div class="mdui-progress-indeterminate"></div>
+      </div>
+    </div>
+    <div class="mdui-container" style="text-align: center">
+        Copyright &copy; 2021 <a href="https://img.cpp.li/">阿里图床</a> All Rights Reserved / Author: <a href="https://t.me/missuo/" >Vincent</a> / Join in <a href="https://t.me/missue/" >Telegram Group</a>.
+    </div>
+</footer>
+</body>
+  <script src="./static/js/jquery.min.js"></script>
+  <script src="./static/js/mdui.min.js"></script>
+  <script src="./static/js/app.js"></script>
+  <script src="./static/js/clipboard.min.js"></script>
+  <script src="./static/js/fileinput.min.js"></script>
+  <script src="./static/js/zh.js"></script>
+  <script src="./static/js/bootstrap.min.js"></script>
+<script>
+  var clipboard = new ClipboardJS('.copy', {
+    text: function(trigger) {
+      return $(trigger).parent('li').text();
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    app.msg(true, '复制成功');
+  });
+
+  clipboard.on('error', function(e) {
+    app.msg(false, '复制失败');
+  });
+
+  var sort = function (uls) {
+    for (var i = 0; i < uls.length; i++) {
+      var sortEle = $(uls[i]).find('li').sort(function (a, b) {
+        return $(a).data('index') > $(b).data('index') ? 1 : -1;
+      });
+      $(uls[i]).empty().append(sortEle);
+    }
+  };
+
+  $("#image").fileinput({
+    uploadUrl: "/upload/index.php",
+    language: "zh",
+    theme: "fas",
+    previewFileType: "image",
+    autoOrientImage: true,
+    uploadAsync: true,
+    overwriteInitial: false,
+    maxFileSize: "51200000",// kb
+    maxFileCount: "10",
+    showCaption: true,
+    dropZoneEnabled: true,
+    browseIcon: "<i class=\"fas fa-images\"></i> ",
+    allowedFileExtensions: JSON.parse('["jpg","jpeg","gif","png","ico","dmg","mp4","ipa","mov"]'),
+  }).on("fileuploaded", function(event, data, previewId, index) {
+    var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
+    if(200 === response.code) {
+      $("#code-url ul").prepend("<li data-index=" + index + ">" + response.data.url + "<i class=\"copy iconfont icon-copy\"></i></li>");
+      $("#code-html ul").prepend("<li data-index=" + index + ">&lt;img src=\"" + response.data.url + "\" alt=\"" + response.data.name + "\" title=\"" + response.data.name + "\" /&gt;<i class=\"copy iconfont icon-copy\"></i></li>");
+      $("#code-bbcode ul").prepend("<li data-index=" + index + ">[img]" + response.data.url + "[/img]<i class=\"copy iconfont icon-copy\"></i></li>");
+      $("#code-markdown ul").prepend("<li data-index=" + index + ">![" + response.data.name + "](" + response.data.url + ")<i class=\"copy iconfont icon-copy\"></i></li>");
+      $("#code-markdown-with-link ul").prepend("<li data-index=" + index + ">[![" + response.data.name + "](" + response.data.url + ")](" + response.data.url + ")<i class=\"copy iconfont icon-copy\"></i></li>");
+
+      // 排序
+      sort(['#code-url ul', '#code-html ul', '#code-bbcode ul', '#code-markdown ul', '#code-markdown-with-link ul']);
+
+      $(".success-info").css("width", "inherit").css('display', 'block');
+      if (response.data.quota && response.data.use_quota) {
+        $('.quota-container progress').attr('max', response.data.quota);
+        $('.quota-container progress').val(response.data.use_quota);
+        $('.quota-container span.quota').text(app.bytesToSize(response.data.quota));
+        $('.quota-container span.use-quota').text(app.bytesToSize(response.data.use_quota));
+      }
+    } else if (500 === response.code) {
+      mdui.alert(response.msg, '发生异常');
+    } else {
+      mdui.alert(response.msg);
+    }
+  }).on("filecleared", function (event, data, msg) {
+    // 清空
+    $('.success-info')
+      .css('display', 'none')
+      .find('#code-url, #code-html, #code-bbcode, #code-markdown, #code-markdown-with-link')
+      .find('ul')
+      .html('');
+  });
+  $('#image').css("display", "block");
+
+  $('.success-info ul').on('mouseenter', "li", function() {
+    $('.file-preview .file-drop-zone .file-preview-thumbnails > [data-template=image]').eq($(this).data('index')).addClass('hover');
+  }).on('mouseout', 'li', function () {
+    $('.file-preview .file-drop-zone .file-preview-thumbnails > [data-template=image]').eq($(this).data('index')).removeClass('hover');
+  });
+</script>
+<script>
+  // Originate from https://sm.ms
+  document.addEventListener('paste', function (event) {
+    var isChrome = false;
+    if ( event.clipboardData || event.originalEvent ) {
+      var clipboardData = (event.clipboardData || event.originalEvent.clipboardData);
+      if ( clipboardData.items ) {
+        // for chrome
+        var  items = clipboardData.items,
+          len = items.length,
+          blob = null;
+        isChrome = true;
+
+        event.preventDefault();
+
+        let images = [];
+        for (var i = 0; i < len; i++) {
+          if (items[i].type.indexOf("image") !== -1) {
+            blob = items[i].getAsFile();
+            var ext = blob.name.substr(blob.name.lastIndexOf(".") + 1)
+            images.push(new File([blob], new Date().getTime() + "." + ext, {
+              type: blob.type
+            }));
+          }
+        }
+        if(images.length > 0) {
+          uploadBlobFile(images);
+        }
+        if ( blob !== null ) {
+          var reader = new FileReader();
+          reader.onload = function (event) {
+            var base64_str = event.target.result;
+          }
+
+        }
+      } else {
+        //for firefox
+      }
+    } else {
+    }
+  });
+
+  function uploadBlobFile(images) {
+    var form = $("#image");
+    mdui.confirm('是否上传粘贴的图片?', function() {
+      $('.file-drop-zone-title').remove();
+      form.fileinput('readFiles', images);
+      setTimeout(function () {
+        form.fileinput('upload');
+      }, 400)
+    }, function () {}, {
+      confirmText: '确定',
+      cancelText: '取消'
+    });
+  }
+</script>
+
+<script>
+  var ver = '1.6.3';
+  $(function () {
+    var toTop = $("#to-top"), toTopHide = function () {
+      if ($(window).scrollTop() > 50) {
+        toTop.removeClass('mdui-fab-hide');
+      } else {
+        toTop.addClass('mdui-fab-hide');
+      }
+    };
+    if ($(window).scrollTop() > 50) {
+      toTopHide();
+    }
+    $(window).scroll(function() {
+      toTopHide();
+    });
+
+    toTop.click(function () {
+      $('body,html').animate({ scrollTop: 0 }, 500);
+    });
+
+    $('.open-menu').click(function () {
+      if ($(window).width() > 1024) {
+        app.cookie.set('menu', $('body').hasClass('mdui-drawer-body-left') ? 'open' : 'close', 10, '/');
+      }
+    });
+
+    $('#update').click(function () {
+      app.getLastVer(ver, true);
+    });
+
+    $('body').on('click', '.markdown-body a', function (e) {
+      e.preventDefault();
+      window.open(this.href, '_blank');
+    });
+  });
+</script>
+  <script src="./static/js/copyUp.js"></script>
+
+  <script src="./static/js/myFonction.js"></script>
+  <script src="./static/js/init.js"></script>
+</html>
